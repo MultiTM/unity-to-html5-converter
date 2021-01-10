@@ -6,14 +6,14 @@ namespace Assets.Editor.HTML5Exporter.Utils
 {
 	public class JsonHelper
 	{
-		public static string CombineStringsInArray(IEnumerable<string> strings)
+		public static string GetJsonArrayString<T>(IEnumerable<T> values)
 		{
+			var array = values.ToArray();
 			var sBuilder = new StringBuilder();
-			var lastString = strings.Last();
-			foreach (var s in strings)
+			for (int i = 0; i < array.Length; i++)
 			{
-				sBuilder.Append($"{s}");
-				if (!s.Equals(lastString))
+				sBuilder.Append($"{array[i]}");
+				if (i < array.Length - 1)
 				{
 					sBuilder.Append(",");
 				}

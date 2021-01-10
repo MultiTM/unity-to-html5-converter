@@ -1,11 +1,9 @@
 import * as THREE from 'three';
-import componentTypes from '../enums/componentTypes';
 
 export default class BaseBuilder {
-	build(components) {
-		const transform = this.getComponentByType(components, componentTypes.TRANSFORM);
+	build({ components, matrix }) {
 		const object = this.createObject(components);
-		this.applyTransformSettings(transform, object);
+		this.applyTransformSettings(matrix, object);
 
 		return object;
 	}
@@ -20,7 +18,7 @@ export default class BaseBuilder {
 		return component;
 	}
 
-	applyTransformSettings({ matrix: matrixArray }, object) {
+	applyTransformSettings(matrixArray, object) {
 		const matrix = new THREE.Matrix4().fromArray(matrixArray);
 		object.applyMatrix4(matrix);
 

@@ -1,5 +1,7 @@
 ﻿using Assets.Editor.HTML5Exporter.Utils;
+using HTML5Exporter.Utils;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace HTML5Exporter.Serializers
@@ -8,7 +10,8 @@ namespace HTML5Exporter.Serializers
 	{
 		public static string Serialize(GameObject gameObject)
 		{
-			var components = gameObject.GetComponents<Component>();
+			var matrixArray = BasisConvertion.GetRightHandedMatrix(gameObject.transform);
+			var components = gameObject.GetComponents<Component>().Where((c) => c.GetType() != typeof(Transform));
 			var serializedComponents = new List<string>();
 			foreach(var c in components)
 			{
@@ -19,9 +22,10 @@ namespace HTML5Exporter.Serializers
 				}
 			}
 
-			var serializedComponentsString = JsonHelper.CombineStringsInArray(serializedComponents);
+			var serializedComponentsString = JsonHelper.GetJsonArrayString(serializedComponents);
+			var serializedMatrixArrayString = JsonHelper.GetJsonArrayString(matrixArray);
 
-			return $"{{ \"components\": {serializedComponentsString}}}";
+			return $"{{ \"components\": {serializedComponentsString}, \"matrix\": {serializedMatrixArrayString}}}";
 		}
 	}
 }

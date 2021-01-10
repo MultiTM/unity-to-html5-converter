@@ -5,14 +5,13 @@ fetch("scene.json")
 	.then(response => response.json())
 	.then(json => init(json));
 
-function init(sceneJson) {
+function init({ objects }) {
 	const scene = new THREE.Scene();
 	const renderer = new THREE.WebGLRenderer();
 	renderer.setClearColor(0x555555);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
 
-	const { objects } = sceneJson;
 	const builtObjects = objects.map(buildObject);
 	const [cameraObj] = builtObjects.filter(obj => obj instanceof THREE.PerspectiveCamera);
 
@@ -29,5 +28,5 @@ function init(sceneJson) {
 function buildObject(object) {
 	const builder = builderResolver.resolve(object);
 
-	return builder.build(object.components);
+	return builder.build(object);
 }

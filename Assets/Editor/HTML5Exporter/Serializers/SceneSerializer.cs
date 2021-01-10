@@ -22,7 +22,7 @@ namespace HTML5Exporter.Serializers
 				}
 			}
 
-			var serializedGameObjectsString = JsonHelper.CombineStringsInArray(serializedGameObjects);
+			var serializedGameObjectsString = JsonHelper.GetJsonArrayString(serializedGameObjects);
 
 			return $"{{ \"objects\": {serializedGameObjectsString}}}";
 		}

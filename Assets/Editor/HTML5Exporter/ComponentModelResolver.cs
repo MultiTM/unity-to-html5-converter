@@ -12,7 +12,6 @@ namespace HTML5Exporter
 
 		static ComponentModelResolver()
 		{
-			componentToModelMap.Add(typeof(Transform), typeof(TransformModel));
 			componentToModelMap.Add(typeof(Camera), typeof(CameraModel));
 			componentToModelMap.Add(typeof(Light), typeof(LightModel));
 			componentToModelMap.Add(typeof(MeshFilter), typeof(MeshFilterModel));

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using HTML5Exporter.Utils;
 
 namespace HTML5Exporter.ComponentModels
 {
@@ -8,7 +9,7 @@ namespace HTML5Exporter.ComponentModels
 
 		public LightModel(Light light) : base(light)
 		{
-			color = $"#{ColorUtility.ToHtmlStringRGB(light.color)}";
+			color = light.color.ToHex();
 		}
 	}
 }
