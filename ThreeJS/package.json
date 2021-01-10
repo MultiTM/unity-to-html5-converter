@@ -1,0 +1,23 @@
+{
+  "name": "ThreeJS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx webpack --config webpack.config.js",
+    "dev": "npx webpack serve --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "require-directory": "^2.1.1",
+    "three": "^0.124.0"
+  }
+}
