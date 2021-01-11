@@ -1,4 +1,3 @@
-using Assets.Editor.HTML5Exporter.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,23 +7,22 @@ namespace HTML5Exporter.Serializers
 {
 	public static class SceneSerializer
 	{
-		public static string Serialize()
+		public static object Serialize()
 		{
 			var scene = SceneManager.GetActiveScene();
 			var activeObjects = Object.FindObjectsOfType<GameObject>().Where(gameObject => gameObject.activeInHierarchy);
-			var serializedGameObjects = new List<string>();
+			var serializedGameObjects = new List<object>();
 			foreach (var gameObject in activeObjects)
 			{
 				var serializedGameObject = GameObjectSerializer.Serialize(gameObject);
-				if (!string.IsNullOrEmpty(serializedGameObject))
+				if (serializedGameObject != null)
 				{
 					serializedGameObjects.Add(serializedGameObject);
 				}
 			}
 
-			var serializedGameObjectsString = JsonHelper.GetJsonArrayString(serializedGameObjects);
 
-			return $"{{ \"objects\": {serializedGameObjectsString}}}";
+			return new { objects = serializedGameObjects };
 		}
 	}
 }

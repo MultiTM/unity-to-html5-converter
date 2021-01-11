@@ -5,7 +5,7 @@ namespace HTML5Exporter.Serializers
 {
 	public static class ComponentSerializer
 	{
-		public static string Serialize(Component component)
+		public static object Serialize(Component component)
 		{
 			var modelType = ComponentModelResolver.Resolve(component);
 			if (modelType == null)
@@ -15,7 +15,7 @@ namespace HTML5Exporter.Serializers
 
 			var model = Activator.CreateInstance(modelType, new object[] { component });
 
-			return JsonUtility.ToJson(model);
+			return model;
 		}
 	}
 }

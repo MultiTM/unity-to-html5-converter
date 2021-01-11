@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace HTML5Exporter.ComponentModels
+namespace HTML5Exporter.Models
 {
 	public class CameraModel : BaseModel
 	{

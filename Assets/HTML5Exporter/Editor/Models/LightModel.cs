@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using HTML5Exporter.Utils;
 
-namespace HTML5Exporter.ComponentModels
+namespace HTML5Exporter.Models
 {
 	public class LightModel : BaseModel
 	{

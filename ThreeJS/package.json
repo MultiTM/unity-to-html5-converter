@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "fs": "0.0.1-security",
+    "html-webpack-plugin": "^4.5.1",
     "require-directory": "^2.1.1",
     "three": "^0.124.0"
   }

@@ -1,28 +1,27 @@
 import * as THREE from 'three';
 import builderResolver from './builderResolver';
 
-fetch("scene.json")
-	.then(response => response.json())
-	.then(json => init(json));
+const RENDERER_CLEAR_COLOR = 0x555555;
+let scene, camera, renderer;
 
 function init({ objects }) {
-	const scene = new THREE.Scene();
-	const renderer = new THREE.WebGLRenderer();
-	renderer.setClearColor(0x555555);
+	scene = new THREE.Scene();
+	renderer = new THREE.WebGLRenderer();
+	renderer.setClearColor(RENDERER_CLEAR_COLOR);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
 
 	const builtObjects = objects.map(buildObject);
-	const [cameraObj] = builtObjects.filter(obj => obj instanceof THREE.PerspectiveCamera);
+	[camera] = builtObjects.filter(obj => obj instanceof THREE.PerspectiveCamera);
 
 	builtObjects.forEach(object => scene.add(object));
 
-	const animate = function () {
-		requestAnimationFrame(animate);
-		renderer.render(scene, cameraObj);
-	};
-
 	animate();
+}
+
+function animate() {
+	requestAnimationFrame(animate);
+	renderer.render(scene, camera);
 }
 
 function buildObject(object) {
@@ -30,3 +29,6 @@ function buildObject(object) {
 
 	return builder.build(object);
 }
+
+const sceneData = JSON.parse(window.sceneJson);
+init(sceneData);
