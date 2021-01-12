@@ -1,4 +1,4 @@
-import componentToBuilderMap from './mappers/componentToBuilder';
+import componentToBuilderMap from '../mappers/componentToBuilder';
 
 function resolve({ components }) {
 	const [component] = components;

@@ -1,6 +1,5 @@
+using HTML5Exporter.Models;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace HTML5Exporter.Serializers
@@ -10,9 +9,9 @@ namespace HTML5Exporter.Serializers
 		public static object Serialize()
 		{
 			var scene = SceneManager.GetActiveScene();
-			var activeObjects = Object.FindObjectsOfType<GameObject>().Where(gameObject => gameObject.activeInHierarchy);
+			var rootObjects = scene.GetRootGameObjects();
 			var serializedGameObjects = new List<object>();
-			foreach (var gameObject in activeObjects)
+			foreach (var gameObject in rootObjects)
 			{
 				var serializedGameObject = GameObjectSerializer.Serialize(gameObject);
 				if (serializedGameObject != null)
@@ -21,8 +20,7 @@ namespace HTML5Exporter.Serializers
 				}
 			}
 
-
-			return new { objects = serializedGameObjects };
+			return new SceneModel(serializedGameObjects.ToArray());
 		}
 	}
 }

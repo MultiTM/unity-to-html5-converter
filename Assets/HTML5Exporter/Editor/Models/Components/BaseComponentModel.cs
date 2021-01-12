@@ -2,11 +2,11 @@
 
 namespace HTML5Exporter.Models
 {
-	public class BaseModel
+	public class BaseComponentModel
 	{
 		public string type;
 
-		public BaseModel(Component component)
+		public BaseComponentModel(Component component)
 		{
 			type = component.GetType().Name;
 		}

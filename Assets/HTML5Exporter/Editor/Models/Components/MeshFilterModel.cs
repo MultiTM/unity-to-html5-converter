@@ -2,7 +2,7 @@
 
 namespace HTML5Exporter.Models
 {
-	public class MeshFilterModel : BaseModel
+	public class MeshFilterModel : BaseComponentModel
 	{
 		public MeshFilterModel(MeshFilter meshFilter) : base(meshFilter)
 		{

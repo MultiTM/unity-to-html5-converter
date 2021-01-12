@@ -3,13 +3,13 @@ using HTML5Exporter.Utils;
 
 namespace HTML5Exporter.Models
 {
-	public class LightModel : BaseModel
+	public class LightModel : BaseComponentModel
 	{
 		public string color;
 
 		public LightModel(Light light) : base(light)
 		{
-			color = light.color.ToHex();
+			color = light.color.ToHexString();
 		}
 	}
 }

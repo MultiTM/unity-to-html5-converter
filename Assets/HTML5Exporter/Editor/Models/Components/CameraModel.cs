@@ -2,7 +2,7 @@
 
 namespace HTML5Exporter.Models
 {
-	public class CameraModel : BaseModel
+	public class CameraModel : BaseComponentModel
 	{
 		public float fov;
 

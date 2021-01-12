@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class Exporter : Editor
+public class Exporter
 {
-	private static readonly string distPath = Path.Combine(Directory.GetCurrentDirectory(), "Assets", "HTML5Exporter", "Dist");
+	private static readonly string distPath = Path.Combine(Directory.GetCurrentDirectory(), "ThreeJS", "dist");
 	private static JsonSerializerSettings settings = new JsonSerializerSettings {
 		NullValueHandling = NullValueHandling.Ignore
 	};
@@ -19,7 +19,7 @@ public class Exporter : Editor
 		var sceneJson = JsonConvert.SerializeObject(sceneData, Formatting.None, settings);
 		var sceneJs = $"window.sceneJson = '{sceneJson}'";
 		
-		var targetPath = EditorUtility.SaveFolderPanel("Save HTML 5 build", Directory.GetCurrentDirectory(), "ThreeJS");
+		var targetPath = EditorUtility.SaveFolderPanel("Save HTML 5 build", Directory.GetCurrentDirectory(), "Build");
 		var distFiles = Directory.GetFiles(distPath).Where((file) => !new Regex(@"\.meta$").IsMatch(file));
 
 		foreach (var file in distFiles)

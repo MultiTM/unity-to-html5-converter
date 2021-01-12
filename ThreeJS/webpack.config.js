@@ -5,10 +5,10 @@ module.exports = {
 	mode: 'development',
 	entry: './src/index.js',
 	devServer: {
-		contentBase: '../Assets/HTML5Exporter/Dist',
+		contentBase: './dist',
 	},
 	output: {
-		path: path.resolve('../Assets/HTML5Exporter/Dist'),
+		path: path.resolve('./dist'),
 		filename: 'main.js',
 	},
 	performance: {

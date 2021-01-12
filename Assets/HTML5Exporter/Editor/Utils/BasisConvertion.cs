@@ -22,6 +22,9 @@ namespace HTML5Exporter.Utils
 			return rightHandedMatrixArray;
 		}
 
+		// See for more details: 
+		// https://towardsdatascience.com/change-of-basis-3909ef4bed43
+		//
 		private static float[] ConvertToRightHanded(float[] matrixArray)
 		{
 			matrixArray[2] = -1 * matrixArray[2];

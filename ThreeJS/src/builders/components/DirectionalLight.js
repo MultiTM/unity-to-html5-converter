@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import BaseBuilder from './base';
-import componentTypes from '../enums/componentTypes';
+import componentTypes from '../../enums/componentTypes';
 
 const defaultValues = {
 	color: 0xffffff
